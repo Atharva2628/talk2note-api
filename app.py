@@ -17,10 +17,11 @@ CORS(app, resources={r"/talk2notecomputex": {"origins": "*", "supports_credentia
 def hello_world():
     audio_uri = request.args.get('audio_uri')
     api_key = request.args.get('api_key')
+    openai_key = request.args.get('openai_key')
 
-    if audio_uri and api_key == 'tbx827b8x_72hdgbyu3ghh88CRYNQIiuyrnh2879iOIUYNjxknw92fbtydIUBTUfb27ybcifynoi3huih-893YNCDYBUTCNkuhncfiicuwi':
+    if audio_uri and openai_key and api_key == 'tbx827b8x_72hdgbyu3ghh88CRYNQIiuyrnh2879iOIUYNjxknw92fbtydIUBTUfb27ybcifynoi3huih-893YNCDYBUTCNkuhncfiicuwi':
         
-        openai.api_key = "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"
+        openai.api_key = str(openai_key)
         
         response = requests.get(audio_uri)
 
